@@ -8,7 +8,7 @@ Setup: Copy the file GNLCC_mdEditorFileInject.py to a location where python.exe 
 Arguments:
 
 -C 
-(Example -C C:\Apps_Programming\Data_Processing\GNLCCmdEditorInject\Demo)
+(Example -C C:\GNLCCmdEditorInject\Demo)
 
 Folder/Directory path to the location of the mdEditor files (with .json extension).  Do not include files that have the .json extension that should not be processed.  An output folder/directory (mdEditorfiles #date/time#) will be created in this provided folder/directory path and all output files will be placed in this new folder/directory.
 
@@ -18,7 +18,7 @@ Folder/Directory path to the location of the mdEditor files (with .json extensio
 JSON location where to inject the mdJSON.  mdEditor files contain one or many items and some of the items house mdJSON.  JSON locations more than one level should be delimited (separated) by a “|” character.  This argument is not needed for injecting contacts mdJSON.  To determine the JSON location, use the JSON preview in the list view of the mdEditor web application (mdeditor.org).
 
 -F
-(Example –F -F C:\Apps_Programming\Data_Processing\GNLCCmdEditorInject\inject_Contact_SRLCC.txt)
+(Example –F -F C:\GNLCCmdEditorInject\inject_Contact_SRLCC.txt)
 
 Full file path of a text file containing mdJSON to inject.  All valid mdJSON content that goes into a mdJSON array, corresponding with the JSON location (argument –D) or a contact identification number, is designed to work.  
 
