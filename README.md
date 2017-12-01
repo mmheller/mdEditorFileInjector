@@ -24,18 +24,18 @@ Full file path of a text file containing mdJSON to inject.  All valid mdJSON con
 
 Tips for creating the mdJSON injector content file:
 
-When creating the non-Contacts injector files, copy/paste content in the preview of the mdEditor web application (mdeditor.org) and remove extraneous “-“ dashes that start some lines.  When copying content, copy the content within the brackets but include the curly braces.  Content within the brackets represent items within an array.  Refrain from copying more than one item at a time.  Arrays within an time are fine to include.  See the attached injector files as examples for use or comparison.
+When creating the non-Contacts injector files, copy/paste content in the preview of the mdEditor web application (mdeditor.org) and remove extraneous “-“ dashes that start some lines.  When copying content, copy the content within the brackets but include the curly braces.  Content within the brackets represent items within an array.  Refrain from copying more than one item at a time.  Arrays within an item are fine to include.  See the attached injector files as examples for use or comparison.
 
 Basic JSON formatting can be verified with http://jsoneditoronline.org/.  Click the format button and the right arrow button to verify and aid perusing of JSON.
 
 For creating the Contacts injector files,  Contacts can be manually created using the mdEditor web application (mdeditor.org) or loading exising mdEditor files with contacts (i.e. the LCC contact seed file https://drive.google.com/open?id=0B37ma8FpyQLpdkVGMVFKT285WkE)
-Refine the number of contacts by clicking the Contacts list view button --> delete all contacts except the one you want to work with.
+Refine the number of contacts by clicking the Contacts list view button --> delete all contacts except the one you want to work with.  Only include on contact per injector file.
 
 Export to mdEditor file --> open the exported file with a text editor or open with http://jsoneditoronline.org/
 
-In not in http://jsoneditoronline.org/, copy/paste the mdEditor text into a fresh http://jsoneditoronline.org/ session --> click the Format JSON… button  click the right arrow
+If not in http://jsoneditoronline.org/, copy/paste the mdEditor text into a fresh http://jsoneditoronline.org/ session --> click the Format JSON... button -->� click the right arrow
 
-Copy the text from the curly brace under the data: key To the 2nd curly brace past export: true and paste into a new text file and save.
+Copy the text from the curly brace under the data: key To the 2nd curly brace past "export: true" and paste into a new text file and save.
 Note: MS Wordpad seems to hold indenting and breaklines better than MS Notepad
  
  
@@ -43,7 +43,6 @@ Note: MS Wordpad seems to hold indenting and breaklines better than MS Notepad
 (Example -T True)
 
 Indicates whether injecting contact mdJSON or not.  If the argument is True, the script will treat as a contact.  If the argument is False, the script will not treat as a contact.
-MS Dos Prompt Example Usage
  
 Files:
 
