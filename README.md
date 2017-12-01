@@ -1,8 +1,4 @@
 # mdEditorFileInjector
-Script to perform bulk edits to mdEditor files by injecting mdJSON content
-
-Date: 11/28/2017
-
 Purpose: to perform bulk edits to mdEditor files by injecting mdJSON content.  mdEditor files are files exported from the mdEditor web application (mdeditor.org).  More information on mdJSON can be found at https://github.com/adiwg/mdJson-schemas.
 
 System Requirements: Python.exe (tested with Python 2.7)
