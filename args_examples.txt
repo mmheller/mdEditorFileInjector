@@ -1,23 +1,23 @@
 Add SRLCC, LCC Network
-C:\Python27\ArcGISx6410.3\python.exe C:\Apps_Programming\Data_Processing\mdEditorFileInjector\mdEditorFileInjector_v1.py -C C:\Apps_Programming\Data_Processing\mdEditorFileInjector\Demo -F C:\Apps_Programming\Data_Processing\mdEditorFileInjector\inject_Contact_SRLCC.txt -T True
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -F C:\#your path#\inject_Contact_SRLCC.txt -T True
 
 Add Contact, LCC Network
-C:\Python27\ArcGISx6410.3\python.exe C:\Apps_Programming\Data_Processing\mdEditorFileInjector\mdEditorFileInjector_v1.py -C C:\Apps_Programming\Data_Processing\mdEditorFileInjector\Demo -F C:\Apps_Programming\Data_Processing\mdEditorFileInjector\inject_Contact_LCCNetwork.txt -T True
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -F C:\#your path#\inject_Contact_LCCNetwork.txt -T True
 
 Add Contact, LCC Network Data Steward
-C:\Python27\ArcGISx6410.3\python.exe C:\Apps_Programming\Data_Processing\mdEditorFileInjector\mdEditorFileInjector_v1.py -C C:\Apps_Programming\Data_Processing\mdEditorFileInjector\Demo -F C:\Apps_Programming\Data_Processing\mdEditorFileInjector\inject_Contact_LCCNetworkDataSteward.txt -T True
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -F C:\#your path#\inject_Contact_LCCNetworkDataSteward.txt -T True
 
 Repsitory: LCC Science Catalog
-C:\Python27\ArcGISx6410.3\python.exe C:\Apps_Programming\Data_Processing\mdEditorFileInjector\mdEditorFileInjector_v1.py -C C:\Apps_Programming\Data_Processing\mdEditorFileInjector\Demo -D metadataRepository -F C:\Apps_Programming\Data_Processing\mdEditorFileInjector\inject_RepoSCIcatalog.txt -T False
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -D metadataRepository -F C:\#your path#\inject_RepoSCIcatalog.txt -T False
 
 LCC Network Data Steward: POC:
-C:\Python27\ArcGISx6410.3\python.exe C:\Apps_Programming\Data_Processing\mdEditorFileInjector\mdEditorFileInjector_v1.py -C C:\Apps_Programming\Data_Processing\mdEditorFileInjector\Demo -D "metadata|resourceInfo|pointOfContact" -F C:\Apps_Programming\Data_Processing\mdEditorFileInjector\inject_POC_LCCDataSteward.txt -T False
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -D "metadata|resourceInfo|pointOfContact" -F C:\#your path#\inject_POC_LCCDataSteward.txt -T False
 
 LCC: POC
-C:\Python27\ArcGISx6410.3\python.exe C:\Apps_Programming\Data_Processing\mdEditorFileInjector\mdEditorFileInjector_v1.py -C C:\Apps_Programming\Data_Processing\mdEditorFileInjector\Demo -D "metadata|resourceInfo|pointOfContact" -F C:\Apps_Programming\Data_Processing\mdEditorFileInjector\inject_POC_LCC.txt -T False
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -D "metadata|resourceInfo|pointOfContact" -F C:\#your path#\inject_POC_LCC.txt -T False
 
 LCC: Responsible Parties
-C:\Python27\ArcGISx6410.3\python.exe C:\Apps_Programming\Data_Processing\mdEditorFileInjector\mdEditorFileInjector_v1.py -C C:\Apps_Programming\Data_Processing\mdEditorFileInjector\Demo -D "metadata|resourceInfo|citation|responsibleParty" -F C:\Apps_Programming\Data_Processing\mdEditorFileInjector\inject_LCCResponsibleParty.txt -T False
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -D "metadata|resourceInfo|citation|responsibleParty" -F C:\#your path#\inject_LCCResponsibleParty.txt -T False
 
 LCC: Metadata Contacts
-C:\Python27\ArcGISx6410.3\python.exe C:\Apps_Programming\Data_Processing\mdEditorFileInjector\mdEditorFileInjector_v1.py -C C:\Apps_Programming\Data_Processing\mdEditorFileInjector\Demo -D "metadata|metadataInfo|metadataContact" -F C:\Apps_Programming\Data_Processing\mdEditorFileInjector\inject_LCCMetadataContact.txt -T False
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -D "metadata|metadataInfo|metadataContact" -F C:\#your path#\inject_LCCMetadataContact.txt -T False
