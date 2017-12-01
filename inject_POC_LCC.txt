@@ -1,0 +1,8 @@
+{
+	"party": [
+		{
+		"contactId": "91c9fffc-52ca-4350-97d4-3332a30c87d5"
+		}
+	],
+	"role": "pointOfContact"
+}

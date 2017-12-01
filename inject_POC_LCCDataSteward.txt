@@ -1,0 +1,5 @@
+{"role": "pointOfContact",
+ "party": [
+ 	{"contactId": "edc6b779-3352-4a81-8430-76bcce1bfcb3"}
+          ]
+}

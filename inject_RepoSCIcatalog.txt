@@ -1,0 +1,7 @@
+{
+   "metadataStandard": "mdJSON", 
+   "citation": {
+	"title": "LCC Network Science Catalog"
+	}, 
+   "repository": "LCCScienceCatalog"
+}
