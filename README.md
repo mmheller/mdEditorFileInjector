@@ -15,12 +15,12 @@ Folder/Directory path to the location of the mdEditor files (with .json extensio
 -D
 (Example -D "metadata|resourceInfo|pointOfContact")
 
-JSON location where to inject the mdJSON.  mdEditor files contain one or many items and some of the items house mdJSON.  JSON locations more than one level should be delimited (separated) by a “|” character.  This argument is not needed for injecting contacts mdJSON.  To determine the JSON location, use the JSON preview in the list view of the mdEditor web application (mdeditor.org).
+JSON location where to inject the mdJSON.  mdEditor files contain one or many items and some of the items house mdJSON.  JSON locations more than one level should be delimited (separated) by a | character.  This argument is not needed for injecting contacts mdJSON.  To determine the JSON location, use the JSON preview in the list view of the mdEditor web application (mdeditor.org).
 
 -F
-(Example –F -F C:\GNLCCmdEditorInject\inject_Contact_SRLCC.txt)
+(Example -F C:\GNLCCmdEditorInject\inject_Contact_SRLCC.txt)
 
-Full file path of a text file containing mdJSON to inject.  All valid mdJSON content that goes into a mdJSON array, corresponding with the JSON location (argument –D) or a contact identification number, is designed to work.  
+Full file path of a text file containing mdJSON to inject.  All valid mdJSON content that goes into a mdJSON array, corresponding with the JSON location (argument -D) or a contact identification number, is designed to work.  
 
 Tips for creating the mdJSON injector content file:
 
@@ -37,8 +37,8 @@ If not in http://jsoneditoronline.org/, copy/paste the mdEditor text into a fres
 
 Copy the text from the curly brace under the data: key To the 2nd curly brace past "export: true" and paste into a new text file and save.
 Note: MS Wordpad seems to hold indenting and breaklines better than MS Notepad
- 
- 
+
+
 -T
 (Example -T True)
 
@@ -65,3 +65,5 @@ inject_POC_LCC.txt: Point of Contact injector file example
 inject_POC_LCCDataSteward.txt: Point of Contact injector file example
 
 inject_RepoSCIcatalog.txt: Repository injector file example
+
+inject_GCMD_Landscape.txt: GCMD Keyword injector file example
