@@ -23,4 +23,4 @@ LCC: Metadata Contacts
 C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -D "metadata|metadataInfo|metadataContact" -F C:\#your path#\inject_LCCMetadataContact.txt -T False
 
 Keywords: GCMD
-C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -D "metadata|metadataInfo|metadataContact" -F C:\#your path#\inject_GCMD_Landscape.txt -T False
+C:\Python27\ArcGISx6410.3\python.exe C:\#your path#\mdEditorFileInjector_v1.py -C C:\#your path#\Demo -D "metadata|resourceInfo|keyword" -F C:\#your path#\inject_GCMD_Landscape.txt -T False
