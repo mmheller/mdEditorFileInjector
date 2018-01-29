@@ -9,27 +9,40 @@ Arguments:
 
 -O
 (Example -O 2)
+
 Sets the inject option.
+
 Projects/Products (Non-Contacts) Option Descriptions:
+
 Option Default:  Write if field does not exist OR exact same value of field does not exist
+
 Option Default with Find File (-f) Specified:  Overwrite the field value if exists (not append)
+
 Option 4: Do nothing if anything exists in the JSON location (-D), else inject
+
 Option 5: Delete JSON content specified in Find file (-f)
+
 Contacts Option Descriptions:
+
 Option Default: if contact ID exists, does not replace or add the contact.
+
 Option 2: if contact ID exists, will replace.  If does not exists, then will add.
+
 Option 3: will utilize the find file (-f) and replace any field name found.
 
 -C 
 (Example -C C:\GNLCCmdEditorInject\Demo)
+
 Folder/Directory path to the location of the mdEditor files (with .json extension).  Do not include files that have the .json extension that should not be processed.  An output folder/directory (mdEditorfiles #date/time#) will be created in this provided folder/directory path and all output files will be placed in this new folder/directory.
 
 -D
 (Example -D "metadata|resourceInfo|pointOfContact")
+
 JSON location where to inject the mdJSON.  mdEditor files contain one or many items and some of the items house mdJSON.  JSON locations more than one level should be delimited (separated) by a “|” character.  This argument is not needed for injecting contacts mdJSON.  To determine the JSON location, use the JSON preview in the list view of the mdEditor web application (mdeditor.org).
 
 -F
 (Example -F C:\GNLCCmdEditorInject\inject_Contact_SRLCC.txt)
+
 Full file path of a text file containing mdJSON to inject.  All valid mdJSON content that goes into a mdJSON array, corresponding with the JSON location (argument –D) or a contact identification number, is designed to work.  
 
 Tips for creating the mdJSON injector content file:
@@ -44,10 +57,12 @@ Note: MS Wordpad seems to hold indenting and breaklines better than MS Notepad
 
 -T
 (Example -T True)
+
 Indicates whether injecting contact mdJSON or not.  If the argument is True, the script will treat as a contact.  If the argument is False, the script will not treat as a contact.
 
 -f
 (Example -f C:\mdEditorFileInjectorWS\find_RepoSCIcatalog.txt)
+
 If updating a project or product (not contact) and using the default option, enter content to find for replacement.  Content can be copied from the mdJSON preview button and removing “-“ dashes.
 If a contact and using Option 3. Enter the field name (key name) inside double quotes.
 
