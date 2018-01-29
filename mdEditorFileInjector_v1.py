@@ -155,7 +155,7 @@ def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject,
                                 if (pPossibleFineGrainItemExistence == json_FindContent):
                                     json_mdJSONTMP.remove(pPossibleFineGrainItemExistence)  # for this find/replace scenario remove the original that matches the find
                                     blnAddContent = False
-                            if (blnAddContent):
+                            if (blnAddContent) and (json_mdJSON2Inject <> ""):
                                 json_mdJSONTMP.append(json_mdJSON2Inject)
                         else:
                             print ""
