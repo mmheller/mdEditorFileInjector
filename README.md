@@ -52,28 +52,51 @@ If updating a project or product (not contact) and using the default option, ent
 If a contact and using Option 3. Enter the field name (key name) inside double quotes.
 
 Files:
+
 args_examples.txt: MS Dos prompt command line usage examples
+
 find_AdmistrativeAreaContacts.txt:  Find text file example to find incorrect spelling once entered for the AdministrativeArea area field of contacts.
+
 find_delete_DeprecatedStatus.txt: Find text file example to locate a particular status and delete the value
+
 find_delete_GCMD_Landscape.txt: Find text file example to locate a particular keyword/thesaurus entry and delete the value
+
 find_RepoSCIcatalog.txt: Find text file example to locate a repository entry
+
 find_Status.txt: Find text file example to locate a particular status
+
 FindReplace_Contact_LCCNetworkDataSteward.txt:  Text file example to find a contact based on contactId and replace with content in this text file
+
 inject_Contact_LCCNetwork.txt: Contacts injector file example
+
 inject_Contact_LCCNetworkDataSteward.txt: Contacts injector file example
+
 inject_Contact_SRLCC.txt: Contacts injector file example
+
 inject_GCMD_Landscape.txt: GCMD Keyword injector file example
+
 inject_ISO_Env.txt:  Keyword inject sample text to add the ISO keyword “environment”
+
 inject_ISO_EnvTest.txt:  Test keyword inject sample text to add the ISO keyword “extraTerrestrial”
+
 inject_LCCMetadataContact.txt: Metadata contact element injector file example 
+
 inject_LCCResponsibleParty.txt: Responsible party element injector file example
+
 inject_POC_LCC.txt: Point of Contact injector file example
+
 inject_POC_LCCDataSteward.txt: Point of Contact injector file example
+
 inject_RepoSCIcatalog.txt: Repository injector file example
+
 mdEditorFileInjector_v1.py: Python script mdEditor inject script.
+
 Readme_with_Screenshots_v1.pdf: Help document with screenshot
+
 replace_AdmistrativeAreaContacts.txt:  Replacement inject field name text for contacts
+
 replace_RepoSCIcatalog.txt:  Replacement inject value for the repository field
+
 replace_Status.txt:  Replacement inject value for the status field
 
 Troubleshooting
