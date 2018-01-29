@@ -1,0 +1,35 @@
+{
+  "keyword": [
+    {
+      "identifier": "f36d71c6-f2ad-49c4-809f-09b4f0688412",
+      "keyword": "EARTH SCIENCE > LAND SURFACE > LANDSCAPE",
+      "path": [
+        "EARTH SCIENCE",
+        "LAND SURFACE",
+        "LANDSCAPE"
+      ]
+    }
+  ],
+  "keywordType": "theme",
+  "thesaurus": {
+    "date": [
+      {
+        "date": "2016-08-10",
+        "dateType": "revision"
+      }
+    ],
+    "title": "Global Change Master Directory (GCMD) Science Keywords",
+    "edition": "Version 8.4",
+    "onlineResource": [
+      {
+        "uri": "https://earthdata.nasa.gov/gcmd-forum"
+      }
+    ],
+    "identifier": [
+      {
+        "identifier": "1eb0ea0a-312c-4d74-8d42-6f1ad758f999"
+      }
+    ]
+  },
+  "fullPath": true
+}

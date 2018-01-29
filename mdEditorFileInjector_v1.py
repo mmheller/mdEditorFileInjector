@@ -1,6 +1,7 @@
 # Description:  Edits mdEditor Files
 # Created By:  Matt Heller, GNLCC/USFWS
 # Date:        11/26/2017
+# Updated:     1/23/2018
 import socket
 import os, errno
 import collections
@@ -15,14 +16,16 @@ str_mdJSON2InjectFile = ""
 str_mdEditorFolderPath = ""
 strElement2Edit = ""
 blnProcessContacts = ""
+strUpdateOption = "1" #default option
+strJSON2FINDFile = ""
 
 try:
   opts, args = getopt.getopt(sys.argv[1:],
-                    "hu:C:F:D:T:",
-                    ["smdEditorFolderPath=", "smdJSON2InjectFile", "sElement2Edit", "bProcessContacts"])
+                    "hu:C:F:D:T:O:f:",
+                    ["smdEditorFolderPath=", "smdJSON2InjectFile", "sElement2Edit", "bProcessContacts", "bUpdateOption", "smdJSON2FINDFile"])
 
 except getopt.GetoptError:
-  print '-C <smdEditorFolderPath> -F <smdJSON2Inject> -D <sElement2Edit> -T <bProcessContacts>'
+  print '-C <smdEditorFolderPath> -F <smdJSON2Inject> -D <sElement2Edit> -T <bProcessContacts> -O <bUpdateOption> -f <smdJSON2FINDFile>'
   sys.exit(2)
 for opt, arg in opts:
   if opt == '-h':
@@ -36,7 +39,15 @@ for opt, arg in opts:
      strElement2Edit = arg
   elif opt in ("-T", "--bProcessContacts"):
      blnProcessContacts = json.loads(arg.lower())
+  elif opt in ("-O", "--bUpdateOption"):
+     strUpdateOption = arg
+  elif opt in ("-f", "--smdJSON2FINDFile"):
+     strJSON2FINDFile = arg
 
+#def removekey(d, key):
+#    r = dict(d)
+#    del r[key]
+#    return r
 
 def CreateBlankASCIIFile (strFileNamePath):
     try:
@@ -47,13 +58,18 @@ def CreateBlankASCIIFile (strFileNamePath):
 
     return strFileNamePath
 
-def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject, blnArgContactItem):
+def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject, blnArgContactItem, json_FindContent, strUpdateOption):
+
+  #json_mdJSON2Inject = "testAdmin"
+  #json_FindContent = "u'adminstrativeArea"
+
+
   try:
       with open(strFileNamePath) as json_data:  #read the mdEditor file
           dic_mdJSON = json.load(json_data)     #grab the json
 
           blnAddTheContact = False
-          if (blnArgContactItem == True):
+          if (blnArgContactItem == True) and (strUpdateOption != "3"):
              blnAddTheContact = True
              json_mdJSONTemp = json.loads(json_mdJSON2Inject["attributes"]["json"])
              strContactID2PotentiallyAdd = json_mdJSONTemp["contactId"]
@@ -63,6 +79,8 @@ def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject,
           for mdEditorItem in dic_mdJSON["data"]:
             ii+=1
             blnIsContactItem = False
+            if (blnArgContactItem == True):
+                blnAddTheOriginalContact = True
 
             if ("type" in mdEditorItem):
                 if (mdEditorItem["type"] == "contacts"):
@@ -72,13 +90,47 @@ def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject,
             if ("json" in  mdEditorItem["attributes"]):#determine if a Contact, Project, or Product element
                 blnIsContactProjectProduct = True
 
-            if (blnIsContactItem == True) & (blnIsContactItem == blnArgContactItem) & (blnIsContactProjectProduct == True):                        #if contact argument TRUE and passed equals item yes/no type
+            if (blnIsContactItem == True) & (blnIsContactItem == blnArgContactItem) & (blnIsContactProjectProduct == True) & (strUpdateOption != "3"):                        #if contact argument TRUE and passed equals item yes/no type
                 json_mdJSON = json.loads(mdEditorItem["attributes"]["json"])  #grab the json within the product/project
                 strContactIDTemp = json_mdJSON["contactId"]
                 if (strContactID2PotentiallyAdd == strContactIDTemp):
-                     blnAddTheContact = False
+                    if (strUpdateOption == "2"):
+                      blnAddTheOriginalContact = False
+                    else:
+                      blnAddTheContact = False
 
-            if (blnIsContactItem == False) & (blnIsContactItem == blnArgContactItem) & (blnIsContactProjectProduct == True):                        #if contact argument FALSE and  passed equals item yes/no type
+            elif (blnIsContactItem == True) & (blnIsContactItem == blnArgContactItem) & (blnIsContactProjectProduct == True) & (strUpdateOption == "3"):                        #if contact argument FALSE and  passed equals item yes/no type
+                 print "*****************************************************************************************************************"
+                 json_mdJSON = json.loads(mdEditorItem["attributes"]["json"])  #grab the json within the contacts
+                 arrayElement2Edit = strElement2Edit.split("|")  # convert the path of the element to edit to array
+                 iE = 0
+
+                 json_mdJSONTMP = json_mdJSON  #probably don't need to set this tmp var
+
+                 for JSONElement in arrayElement2Edit:
+                    print "looking for element:" + JSONElement
+                    iE += 1
+
+                    if (JSONElement in json_mdJSONTMP):
+                        json_mdJSONTMP = json_mdJSONTMP[JSONElement]
+
+                        if(iE == len(arrayElement2Edit)):
+                            for pFindReplaceItem in json_mdJSONTMP:
+                                for pPossibleFineGrainItemExistence in pFindReplaceItem:
+                                    if (json_FindContent == pPossibleFineGrainItemExistence):
+                                        pFindReplaceItem[json_mdJSON2Inject] = pFindReplaceItem[json_FindContent] #get the value
+                                        del pFindReplaceItem[json_FindContent] #get the value
+                        else:
+                            print ""
+                    elif(iE == len(arrayElement2Edit)): #if cannot find the element AND the last element in the search array, then assume inject edit.
+                        json_mdJSONTMP[JSONElement] = [json_mdJSON2Inject]
+                    else:
+                        print "issue!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                    print json.dumps(json_mdJSON, indent=4)  #json_mdJSONTMP = json_mdJSON
+                    print "*****************************************************************************************************************"
+                    mdEditorItem["attributes"]["json"] = json.dumps(json_mdJSON, indent=4)  #json_mdJSONTMP = json_mdJSON
+
+            elif (blnIsContactItem == False) & (blnIsContactItem == blnArgContactItem) & (blnIsContactProjectProduct == True) & (strUpdateOption != 3):                        #if contact argument FALSE and  passed equals item yes/no type
                  print "*****************************************************************************************************************"
                  json_mdJSON = json.loads(mdEditorItem["attributes"]["json"])  #grab the json within the product/project
                  arrayElement2Edit = strElement2Edit.split("|")  # convert the path of the element to edit to array
@@ -96,7 +148,12 @@ def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject,
                         if(iE == len(arrayElement2Edit)):
                             blnAddContent = True
                             for pPossibleFineGrainItemExistence in json_mdJSONTMP:
+                                if (strUpdateOption == "4"):
+                                    blnAddContent = False
                                 if (pPossibleFineGrainItemExistence == json_mdJSON2Inject):
+                                    blnAddContent = False
+                                if (pPossibleFineGrainItemExistence == json_FindContent):
+                                    json_mdJSONTMP.remove(pPossibleFineGrainItemExistence)  # for this find/replace scenario remove the original that matches the find
                                     blnAddContent = False
                             if (blnAddContent):
                                 json_mdJSONTMP.append(json_mdJSON2Inject)
@@ -109,7 +166,13 @@ def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject,
                     print json.dumps(json_mdJSON, indent=4)
                     print "*****************************************************************************************************************"
                     mdEditorItem["attributes"]["json"] = json.dumps(json_mdJSON, indent=4)
-            arrayFinalContent.append(mdEditorItem)
+
+            if ((blnArgContactItem == True) and (blnAddTheOriginalContact == True)):
+                arrayFinalContent.append(mdEditorItem)
+            elif ((blnArgContactItem == True) and (blnAddTheOriginalContact == False)):
+                print "skipping adding contact, will replace with another"
+            else:
+                arrayFinalContent.append(mdEditorItem)
 
       if (blnAddTheContact == True):
         arrayFinalContent.append(json_mdJSON2Inject)
@@ -131,6 +194,7 @@ def CheckInjectString(str_mdJSON2InjectFile):
   try:
       with open(str_mdJSON2InjectFile) as json_data:  #read the mdEditor file
           dic_mdJSON = json.load(json_data)
+
       return dic_mdJSON
   except Exception, e:
       import traceback, sys# If an error occurred, print line number and error message
@@ -146,6 +210,10 @@ timeout = 60 # timeout in seconds
 socket.setdefaulttimeout(timeout)
 
 json_InjectContent = CheckInjectString(str_mdJSON2InjectFile)
+
+json_FindContent = CheckInjectString(strJSON2FINDFile)
+
+
 print "Looking for mdEditor (.JSON) files in: " + str_mdEditorFolderPath
 
 strNewFolder = str_mdEditorFolderPath + "\\" + "mdEditorFiles" + str(datetime.datetime.now()).replace(" ","_").replace(":","_").replace(".","_")
@@ -162,7 +230,7 @@ try:
 
                 if (pRoot <> strNewFolder): #don't process the files that are processed during this session
                     print "processing file:" + strFileNamePath
-                    strOutputText = Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_InjectContent, blnProcessContacts)
+                    strOutputText = Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_InjectContent, blnProcessContacts, json_FindContent, strUpdateOption)
                     strOutputFileNamePath2 = CreateBlankASCIIFile(strNewFolder + '\\' + pFile)
                     with open(strOutputFileNamePath2, mode="wb") as outfile:
                         outfile.write(strOutputText)
