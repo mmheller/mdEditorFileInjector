@@ -35,7 +35,7 @@ Find Replace Repsitory: LCC Science Catalog
 C:\Python27\ArcGISx6410.5\python.exe C:\mdEditorFileInjectorWS\mdEditorFileInjector_v1.py -C C:\mdEditorFileInjectorWS\Demo -D metadataRepository -F C:\mdEditorFileInjectorWS\replace_RepoSCIcatalog.txt -T False -f C:\mdEditorFileInjectorWS\find_RepoSCIcatalog.txt
 
 Find Replace Status: 
-C:\Python27\ArcGISx6410.5\python.exe C:\mdEditorFileInjectorWS\mdEditorFileInjector_v1.py -C C:\mdEditorFileInjectorWS\Demo -D metadata|resourceInfo|status -F C:\mdEditorFileInjectorWS\replace_Status.txt -T False -f C:\mdEditorFileInjectorWS\find_Status.txt
+C:\Python27\ArcGISx6410.5\python.exe C:\mdEditorFileInjectorWS\mdEditorFileInjector_v1.py -C C:\mdEditorFileInjectorWS\Demo -D "metadata|resourceInfo|status" -F C:\mdEditorFileInjectorWS\replace_Status.txt -T False -f C:\mdEditorFileInjectorWS\find_Status.txt
 
 Find/Replace Contact, !!!!!!TEST THIS!!!!!!!LCC Network Data Steward TEST THIS!!!!!!!
 C:\Python27\ArcGISx6410.5\python.exe C:\mdEditorFileInjectorWS\mdEditorFileInjector_v1.py -C C:\mdEditorFileInjectorWS\Demo -F C:\mdEditorFileInjectorWS\FindReplace_Contact_LCCNetworkDataSteward.txt -T True -O 2
@@ -44,7 +44,7 @@ Find/Replace anytext in Contact (Admin area)
 C:\Python27\ArcGISx6410.5\python.exe C:\mdEditorFileInjectorWS\mdEditorFileInjector_v1.py -C C:\mdEditorFileInjectorWS\Demo -D address -F C:\mdEditorFileInjectorWS\replace_AdmistrativeAreaContacts.txt -f C:\mdEditorFileInjectorWS\find_AdmistrativeAreaContacts.txt -T True -O 3
 
 Find/Delete GCMD Landscape Keyword
-C:\Python27\ArcGISx6410.5\python.exe C:\mdEditorFileInjectorWS\mdEditorFileInjector_v1.py -C C:\mdEditorFileInjectorWS\Demo -D metadata|resourceInfo|keyword -f C:\mdEditorFileInjectorWS\find_delete_GCMD_Landscape.txt -T False -O 5
+C:\Python27\ArcGISx6410.5\python.exe C:\mdEditorFileInjectorWS\mdEditorFileInjector_v1.py -C C:\mdEditorFileInjectorWS\Demo -D "metadata|resourceInfo|keyword" -f C:\mdEditorFileInjectorWS\find_delete_GCMD_Landscape.txt -T False -O 5
 
 Find/Delete Deprecated Status
 C:\Python27\ArcGISx6410.5\python.exe C:\mdEditorFileInjectorWS\mdEditorFileInjector_v1.py -C C:\mdEditorFileInjectorWS\Demo -D metadata|resourceInfo|status -f C:\mdEditorFileInjectorWS\find_delete_DeprecatedStatus.txt -T False -O 5
