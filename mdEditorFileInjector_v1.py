@@ -146,6 +146,7 @@ def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject,
                         json_mdJSONTMP = json_mdJSONTMP[JSONElement]
 
                         if(iE == len(arrayElement2Edit)):
+                            blnFindTextFound = False  #This is for the default option, non-contact, find/replace
                             blnAddContent = True
                             for pPossibleFineGrainItemExistence in json_mdJSONTMP:
                                 if (strUpdateOption == "4"):
@@ -153,13 +154,17 @@ def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject,
                                 if (pPossibleFineGrainItemExistence == json_mdJSON2Inject):
                                     blnAddContent = False
                                 if (pPossibleFineGrainItemExistence == json_FindContent):
+                                    blnFindTextFound = True  
                                     json_mdJSONTMP.remove(pPossibleFineGrainItemExistence)  # for this find/replace scenario remove the original that matches the find
-                                    blnAddContent = False
+                                    if (strUpdateOption == "5"): # option 5 is the find and delete option
+                                        blnAddContent = False
+                            if (not (blnFindTextFound)) and (strUpdateOption == "1") and (json_mdJSON2Inject <> "") and (json_FindContent <> ""):
+                                blnAddContent = False
                             if (blnAddContent) and (json_mdJSON2Inject <> ""):
                                 json_mdJSONTMP.append(json_mdJSON2Inject)
                         else:
                             print ""
-                    elif(iE == len(arrayElement2Edit)): #if cannot find the element AND the last element in the search array, then assume inject edit.
+                    elif(iE == len(arrayElement2Edit)) and (json_mdJSON2Inject <> ""): #if cannot find the element AND the last element in the search array, then assume inject edit.
                         json_mdJSONTMP[JSONElement] = [json_mdJSON2Inject]
                     else:
                         print "issue!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
