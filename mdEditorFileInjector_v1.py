@@ -158,13 +158,31 @@ def Process_mdEditorInsert(strFileNamePath, strElement2Edit, json_mdJSON2Inject,
                                     json_mdJSONTMP.remove(pPossibleFineGrainItemExistence)  # for this find/replace scenario remove the original that matches the find
                                     if (strUpdateOption == "5"): # option 5 is the find and delete option
                                         blnAddContent = False
+                                if (strUpdateOption == "6"):  #options 6 is for adding the admistrative funder
+                                    strpPossibleFineGrainItemExistence = json.dumps(pPossibleFineGrainItemExistence)
+                                    strjson_FindContent = json.dumps(json_FindContent).replace("{","").replace("}","")
+
+                                    json_mdJSONTMP.remove(pPossibleFineGrainItemExistence)  # for this find/replace scenario remove the original that matches the find
+
+                                    if (strpPossibleFineGrainItemExistence.find(strjson_FindContent) >= 0):
+                                        blnFindTextFound = True  
+                                        strjson_mdJSON2Inject = json.dumps(json_mdJSON2Inject)
+
+                                        strjson_mdJSON2Inject = strjson_mdJSON2Inject[1:]
+                                        strjson_mdJSON2Inject = strjson_mdJSON2Inject[:-1]
+
+                                        strpPossibleFineGrainItemExistence = strpPossibleFineGrainItemExistence.replace(strjson_FindContent, strjson_FindContent +', ' + strjson_mdJSON2Inject)
+
+                                        json_mdJSON2Inject2 = json.loads(strpPossibleFineGrainItemExistence)
                             if (not (blnFindTextFound)) and (strUpdateOption == "1") and (json_mdJSON2Inject <> "") and (json_FindContent <> ""):
                                 blnAddContent = False
-                            if (blnAddContent) and (json_mdJSON2Inject <> ""):
+                            if (blnAddContent) and (json_mdJSON2Inject <> "") and (strUpdateOption == "6"):
+                                json_mdJSONTMP.append(json_mdJSON2Inject2)
+                            elif (blnAddContent) and (json_mdJSON2Inject <> ""):
                                 json_mdJSONTMP.append(json_mdJSON2Inject)
                         else:
                             print ""
-                    elif(iE == len(arrayElement2Edit)) and (json_mdJSON2Inject <> ""): #if cannot find the element AND the last element in the search array, then assume inject edit.
+                    elif(iE == len(arrayElement2Edit)) and (json_mdJSON2Inject <> "") and (strUpdateOption <> "6"): #if cannot find the element AND the last element in the search array, then assume inject edit.
                         json_mdJSONTMP[JSONElement] = [json_mdJSON2Inject]
                     else:
                         print "issue!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"

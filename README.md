@@ -22,6 +22,8 @@ Option 4: Do nothing if anything exists in the JSON location (-D), else inject
 
 Option 5: Delete JSON content specified in Find file (-f)
 
+Option 6: Complex find and complex replace.  Example: looking for "matching": false in the allocation section and replacing the value with the same value plus another administrator lcc object value.
+
 Contacts Option Descriptions:
 
 Option Default: if contact ID exists, does not replace or add the contact.
@@ -76,6 +78,7 @@ find_delete_DeprecatedStatus.txt: Find text file example to locate a particular 
 
 find_delete_GCMD_Landscape.txt: Find text file example to locate a particular keyword/thesaurus entry and delete the value
 
+find_FundingAdminstrator.txt:  Find text file example to locate a "matching": false value within a greater allocation object.
 find_RepoSCIcatalog.txt: Find text file example to locate a repository entry
 
 find_Status.txt: Find text file example to locate a particular status
@@ -90,6 +93,7 @@ inject_Contact_SRLCC.txt: Contacts injector file example
 
 inject_GCMD_Landscape.txt: GCMD Keyword injector file example
 
+inject_FundingAdministrator.txt: funding administrator contact example for adding a contact id.
 inject_ISO_Env.txt:  Keyword inject sample text to add the ISO keyword “environment”
 
 inject_ISO_EnvTest.txt:  Test keyword inject sample text to add the ISO keyword “extraTerrestrial”
