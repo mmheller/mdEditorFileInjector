@@ -307,7 +307,7 @@ def BuildOption7JSON(strSBID):
       strInjectContent += '"onlineOption": [{"uri":"'
       strInjectContent += strSBURL
       strInjectContent += '",'
-      strInjectContent += '"name": "Product Web-page with Downloadable Files"'
+      strInjectContent += '"name": "Product Web-page with Downloadable Files", "function": "information"'
       strInjectContent += '}]}]}]}'
 
       dic_mdJSON = json.loads(strInjectContent)
